@@ -1,0 +1,179 @@
+AF5039 Econometrics -- cross-sectional growth regression
+Python replication run | N = 171 economies
+Specification: growth24 ~ lngdppc23 + gcf23 + highinc
+
+==============================================================================
+SECTION A.1  Descriptive statistics (Table 1)
+==============================================================================
+               N    Mean     SD     Min  Median     Max   Skew  Kurtosis
+growth24   171.0   1.819  3.729 -24.657   2.145  12.209 -2.690    19.773
+lngdppc23  171.0   8.794  1.429   5.935   8.729  11.646  0.003     2.061
+gcf23      171.0  23.404  7.918  -3.735  22.941  45.266 -0.025     4.255
+highinc    171.0   0.357  0.480   0.000   0.000   1.000  0.603     1.345
+
+==============================================================================
+SECTION A.2  OLS estimates
+==============================================================================
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               growth24   R-squared:                       0.095
+Model:                            OLS   Adj. R-squared:                  0.079
+Method:                 Least Squares   F-statistic:                     5.835
+Date:                Fri, 11 Sep 2026   Prob (F-statistic):           0.000816
+Time:                        16:38:51   Log-Likelihood:                -458.69
+No. Observations:                 171   AIC:                             925.4
+Df Residuals:                     167   BIC:                             937.9
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -2.7858      2.781     -1.002      0.318      -8.276       2.704
+lngdppc23      0.1889      0.335      0.564      0.573      -0.472       0.850
+gcf23          0.1401      0.035      4.038      0.000       0.072       0.209
+highinc       -0.9383      0.995     -0.943      0.347      -2.903       1.026
+==============================================================================
+Omnibus:                      145.223   Durbin-Watson:                   1.825
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2966.873
+Skew:                          -2.909   Prob(JB):                         0.00
+Kurtosis:                      22.559   Cond. No.                         276.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+==============================================================================
+SECTION B.1  Diagnostic tests (Table 3)
+==============================================================================
+                        Test  Statistic  p-value                            Null hypothesis
+          Breusch-Pagan (LM)     1.7275   0.6308                       Homoskedastic errors
+            White (LM, 8 df)     4.2251   0.8363                       Homoskedastic errors
+Ramsey RESET (F, powers 2-4)     0.3138   0.8154 Linear functional form correctly specified
+                 Jarque-Bera  2966.8729   0.0000                Normally distributed errors
+
+==============================================================================
+SECTION B.2  Variance inflation factors
+==============================================================================
+ Variable   VIF
+    const 1.000
+lngdppc23 3.032
+    gcf23 1.001
+  highinc 3.033
+
+==============================================================================
+SECTION C.1  Robustness: HC1 robust standard errors
+==============================================================================
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               growth24   R-squared:                       0.095
+Model:                            OLS   Adj. R-squared:                  0.079
+Method:                 Least Squares   F-statistic:                     4.640
+Date:                Fri, 11 Sep 2026   Prob (F-statistic):            0.00383
+Time:                        16:38:51   Log-Likelihood:                -458.69
+No. Observations:                 171   AIC:                             925.4
+Df Residuals:                     167   BIC:                             937.9
+Df Model:                           3                                         
+Covariance Type:                  HC1                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -2.7858      2.835     -0.983      0.326      -8.342       2.770
+lngdppc23      0.1889      0.288      0.656      0.512      -0.375       0.753
+gcf23          0.1401      0.044      3.215      0.001       0.055       0.225
+highinc       -0.9383      0.851     -1.103      0.270      -2.606       0.729
+==============================================================================
+Omnibus:                      145.223   Durbin-Watson:                   1.825
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             2966.873
+Skew:                          -2.909   Prob(JB):                         0.00
+Kurtosis:                      22.559   Cond. No.                         276.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC1)
+
+==============================================================================
+SECTION C.2  Robustness: feasible weighted least squares
+==============================================================================
+                            WLS Regression Results                            
+==============================================================================
+Dep. Variable:               growth24   R-squared:                       0.124
+Model:                            WLS   Adj. R-squared:                  0.108
+Method:                 Least Squares   F-statistic:                     7.871
+Date:                Fri, 11 Sep 2026   Prob (F-statistic):           6.07e-05
+Time:                        16:38:51   Log-Likelihood:                -463.54
+No. Observations:                 171   AIC:                             935.1
+Df Residuals:                     167   BIC:                             947.6
+Df Model:                           3                                         
+Covariance Type:            nonrobust                                         
+==============================================================================
+                 coef    std err          t      P>|t|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept     -2.9346      2.659     -1.104      0.271      -8.184       2.315
+lngdppc23      0.1659      0.321      0.516      0.606      -0.469       0.801
+gcf23          0.1541      0.033      4.649      0.000       0.089       0.220
+highinc       -0.9202      1.013     -0.908      0.365      -2.921       1.081
+==============================================================================
+Omnibus:                      161.363   Durbin-Watson:                   1.843
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):             4574.883
+Skew:                          -3.276   Prob(JB):                         0.00
+Kurtosis:                      27.478   Cond. No.                         284.
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+
+==============================================================================
+SECTION C.3  Robustness: outlier-trimmed subsample
+==============================================================================
+dropped 3 observations with |studentised resid| > 3:
+           country   growth24
+West Bank and Gaza -24.656790
+             Sudan -14.657023
+       Timor-Leste -10.161913
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:               growth24   R-squared:                       0.136
+Model:                            OLS   Adj. R-squared:                  0.121
+Method:                 Least Squares   F-statistic:                     7.409
+Date:                Fri, 11 Sep 2026   Prob (F-statistic):           0.000110
+Time:                        16:38:51   Log-Likelihood:                -393.31
+No. Observations:                 168   AIC:                             794.6
+Df Residuals:                     164   BIC:                             807.1
+Df Model:                           3                                         
+Covariance Type:                  HC1                                         
+==============================================================================
+                 coef    std err          z      P>|z|      [0.025      0.975]
+------------------------------------------------------------------------------
+Intercept      0.2979      1.957      0.152      0.879      -3.538       4.133
+lngdppc23     -0.0530      0.236     -0.224      0.822      -0.516       0.410
+gcf23          0.1115      0.034      3.265      0.001       0.045       0.178
+highinc       -0.8511      0.756     -1.126      0.260      -2.333       0.631
+==============================================================================
+Omnibus:                        8.704   Durbin-Watson:                   1.717
+Prob(Omnibus):                  0.013   Jarque-Bera (JB):               16.828
+Skew:                           0.108   Prob(JB):                     0.000222
+Kurtosis:                       4.535   Cond. No.                         281.
+==============================================================================
+
+Notes:
+[1] Standard Errors are heteroscedasticity robust (HC1)
+
+==============================================================================
+COMPARISON  Table 2: coefficients across specifications
+==============================================================================
+           OLS: coef  OLS: se  OLS: t  OLS: p  Robust: coef  Robust: se  Robust: t  Robust: p  WLS: coef  WLS: se  WLS: t  WLS: p  Trimmed: coef  Trimmed: se  Trimmed: t  Trimmed: p
+Regressor                                                                                                                                                                            
+Intercept    -2.7858   2.7809  -1.002  0.3179       -2.7858      2.8349     -0.983     0.3258    -2.9346   2.6591  -1.104  0.2713         0.2979       1.9569       0.152      0.8790
+lngdppc23     0.1889   0.3347   0.564  0.5732        0.1889      0.2877      0.656     0.5115     0.1659   0.3215   0.516  0.6064        -0.0530       0.2363      -0.224      0.8225
+gcf23         0.1401   0.0347   4.038  0.0001        0.1401      0.0436      3.215     0.0013     0.1541   0.0332   4.649  0.0000         0.1115       0.0341       3.265      0.0011
+highinc      -0.9383   0.9952  -0.943  0.3471       -0.9383      0.8507     -1.103     0.2700    -0.9202   1.0134  -0.908  0.3652        -0.8511       0.7562      -1.126      0.2603
+
+       Model   N  R-squared  Adj. R-squared  F / Wald   p(F)
+         OLS 171     0.0949          0.0786     5.835 0.0008
+Robust (HC1) 171     0.0949          0.0786     4.640 0.0038
+         WLS 171     0.1239          0.1081     7.871 0.0001
+     Trimmed 168     0.1365          0.1207     7.409 0.0001
+
+figures written: resid_plot.png, qq_plot.png, resid_hist.png, scatter_convergence.png
+
+run complete.

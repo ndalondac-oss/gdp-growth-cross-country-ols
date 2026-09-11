@@ -1,0 +1,5 @@
+Test,Statistic,p-value,Null hypothesis
+Breusch-Pagan (LM),1.7275,0.6308,Homoskedastic errors
+"White (LM, 8 df)",4.2251,0.8363,Homoskedastic errors
+"Ramsey RESET (F, powers 2-4)",0.3138,0.8154,Linear functional form correctly specified
+Jarque-Bera,2966.8729,0.0,Normally distributed errors
